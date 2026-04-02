@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card shadow-sm border-0">
+    <div class="card-body">
+        <h2 class="mb-4">Registrar Préstamo</h2>
+
+        <form method="post" action="{% url 'crear_prestamo' %}">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label class="form-label">Usuario</label>
+                <select name="usuario_id" class="form-select" required>
+                    <option value="" selected disabled>Seleccione un usuario</option>
+                    {% for usuario in usuarios %}
+                    <option value="{{ usuario.id }}">{{ usuario.nombre }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Libro</label>
+                <select name="libro_id" class="form-select" {% if not libros %}disabled{% endif %} required>
+                    {% if libros %}
+                        <option value="" selected disabled>Seleccione un libro</option>
+                        {% for libro in libros %}
+                        <option value="{{ libro.id }}">{{ libro.titulo }}</option>
+                        {% endfor %}
+                    {% else %}
+                        <option value="" selected>No hay libros disponibles</option>
+                    {% endif %}
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-success" {% if not libros %}disabled{% endif %}>
+                Guardar
+            </button>
+            <a href="{% url 'lista_prestamos' %}" class="btn btn-secondary">Volver</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
+

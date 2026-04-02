@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="p-4 p-md-5 mb-4 bg-white rounded shadow-sm">
+    <div class="text-center">
+        <h1 class="display-6 fw-bold">Sistema de Gestión de Biblioteca</h1>
+        <p class="lead mb-0">
+            Aplicación desarrollada con Django, SQLite, Bootstrap y operaciones CRUD
+            para la administración de libros, usuarios y préstamos.
+        </p>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body text-center">
+                <h5 class="card-title">Total de libros</h5>
+                <p class="display-6 fw-bold">{{ total_libros }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body text-center">
+                <h5 class="card-title">Libros disponibles</h5>
+                <p class="display-6 fw-bold text-success">{{ libros_disponibles }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body text-center">
+                <h5 class="card-title">Libros prestados</h5>
+                <p class="display-6 fw-bold text-danger">{{ libros_prestados }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body text-center">
+                <h5 class="card-title">Usuarios registrados</h5>
+                <p class="display-6 fw-bold text-primary">{{ total_usuarios }}</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card border-0 shadow-sm h-100">
+            <div class="card-body text-center">
+                <h5 class="card-title">Préstamos activos</h5>
+                <p class="display-6 fw-bold text-warning">{{ prestamos_activos }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
